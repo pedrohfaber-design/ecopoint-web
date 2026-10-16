@@ -7,7 +7,8 @@ import {
     loginSchema,
     type LoginFormData,
 } from "@/schemas/auth";
-
+const API_URL =
+    import.meta.env.VITE_API_URL || "http://127.0.0.1:3000";
 export default function LoginForm() {
     const { login } = useAuth();
     const navigate = useNavigate();
@@ -23,8 +24,8 @@ export default function LoginForm() {
     async function onSubmit(data: LoginFormData) {
         try {
             const response = await fetch(
-                "http://127.0.0.1:3000/api/users/login",
-                {
+    `${API_URL}/api/users/login`,
+    {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
